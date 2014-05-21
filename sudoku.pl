@@ -1,4 +1,5 @@
-#!/usr/pkg/bin/perl
+#!/usr/bin/env perl
+use Algorithm::Permute;
 
 $a = 7;
 $b = 8;
@@ -55,27 +56,12 @@ sub eqn8() {
     return (5 + $f + 13 + $l);
 }
 
-sub swap() {
-	my ($i1, $i2, @coeffs) = @_;
-	my $temp = $coeffs[$i1];
-	$coeffs[$i1] = $coeffs[$i2];
-	$coeffs[$i2] = $temp;
-	return(@coeffs);
-}
-
-sub permutation() {
-	my ($perm, @set) = @_;
-	print "$perm\n" || return unless (@set);
-	&permutation($perm.$set[$_],@set[0..$_-1],@set[$_+1..$#set]) foreach (0..$#set);
-}
-
-@pSet = &permutation('', @coeffs);
-
+$p_iterator = Algorithm::Permute->new( \@coeffs );
 $done = 0;
 $i1 = 0;
 $i2 = 1;
 print "Program started...\n";
-while ($done == 0) {
+while (@perm = $p_iterator->next) {
 	$ans7 = &eqn7($d,$j);
 	$ans8 = &eqn8($f, $l);
 	$ans6 = &eqn6($k,$l, $c);
@@ -94,40 +80,28 @@ while ($done == 0) {
                                 if (&eqn1($a, $b, $c) == 46) {
                                     $done == 1;
                                     print "$a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l\n";
-   							    } 
-			    			}
-						}
-		    		}
-				}
-	     	}
-         }
+				} 
+			    }
+			}
+		    }
+		}
+	    }
+	}
     }
-	print "answers: $ans1, $ans2, $ans3, $ans4, $ans5, $ans6, $ans7, $ans8\n";
-	print "$a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l\n";
-	print "i1 = $i1, i2 = $i2\n";
-	@coeffs = &swap($i1, $i2, @coeffs);
-	$a = $coeffs[0];
-	$b = $coeffs[1];
-	$c = $coeffs[2];
-	$d = $coeffs[3];
-	$e = $coeffs[4];
-	$f = $coeffs[5];
-	$g = $coeffs[6];
-	$h = $coeffs[7];
-	$i = $coeffs[8];
-	$j = $coeffs[9];
-	$k = $coeffs[10];
-	$l = $coeffs[11];
+print "answers: $ans1, $ans2, $ans3, $ans4, $ans5, $ans6, $ans7, $ans8\n";
+print "$a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l\n";
+$a = $perm[0];
+$b = $perm[1];
+$c = $perm[2];
+$d = $perm[3];
+$e = $perm[4];
+$f = $perm[5];
+$g = $perm[6];
+$h = $perm[7];
+$i = $perm[8];
+$j = $perm[9];
+$k = $perm[10];
+$l = $perm[11];
 	
-	if ($i2 >= 11 && $i1 < 11) {
-		$i1 = $i1 + 1;
-		$i2 = $i1 + 1;
-	} else {
-		$i2 = $i2+1;
-	}
-	if ($i1 >= 11) {
-		$i1 = 0;
-		$i2 = 1;
-	}
-	$mychar = <STDIN>;
+$mychar = <STDIN>;
 } 
