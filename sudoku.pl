@@ -48,20 +48,29 @@ sub eqn6() {
 
 sub eqn7() {
     my ($d, $j) = @_;
-    return (4 + $d + 13 + $j);
+    return (4 + $d + 13 + $j + 3);
 }
 
 sub eqn8() {
     my ($f, $l) = @_;
-    return (5 + $f + 13 + $l);
+    return (5 + $f + 13 + $l + 2);
 }
 
 $p_iterator = Algorithm::Permute->new( \@coeffs );
-$done = 0;
-$i1 = 0;
-$i2 = 1;
 print "Program started...\n";
 while (@perm = $p_iterator->next) {
+	$a = $perm[0];
+	$b = $perm[1];
+	$c = $perm[2];
+	$d = $perm[3];
+	$e = $perm[4];
+	$f = $perm[5];
+	$g = $perm[6];
+	$h = $perm[7];
+	$i = $perm[8];
+	$j = $perm[9];
+	$k = $perm[10];
+	$l = $perm[11];
 	$ans7 = &eqn7($d,$j);
 	$ans8 = &eqn8($f, $l);
 	$ans6 = &eqn6($k,$l, $c);
@@ -70,15 +79,14 @@ while (@perm = $p_iterator->next) {
 	$ans3 = &eqn3($e, $f, $g);
 	$ans2 = &eqn2($a, $d, $e);
 	$ans1 = &eqn1($a, $b, $c);
-    if (&eqn7($d, $j) == 46) {
-        if (&eqn8($f, $l) == 46) {
-            if (&eqn6($k, $l, $c) == 46) {
-                if (&eqn5($i, $j, $k) == 46) {
-                    if (&eqn4($g, $h, $i) == 46) {
-                        if (&eqn3($e, $f, $g) == 46) {
-                            if (&eqn2($a, $d, $e) == 46) {
-                                if (&eqn1($a, $b, $c) == 46) {
-                                    $done == 1;
+    if ($ans1 == 46) {
+        if ($ans2 == 46) {
+            if ($ans3 == 46) {
+                if ($ans4 == 46) {
+                    if ($ans5 == 46) {
+                        if ($ans6 == 46) {
+                            if ($ans7 == 46) {
+                                if ($ans8 == 46) {
                                     print "$a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l\n";
 				} 
 			    }
@@ -88,20 +96,6 @@ while (@perm = $p_iterator->next) {
 	    }
 	}
     }
-print "answers: $ans1, $ans2, $ans3, $ans4, $ans5, $ans6, $ans7, $ans8\n";
-print "$a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l\n";
-$a = $perm[0];
-$b = $perm[1];
-$c = $perm[2];
-$d = $perm[3];
-$e = $perm[4];
-$f = $perm[5];
-$g = $perm[6];
-$h = $perm[7];
-$i = $perm[8];
-$j = $perm[9];
-$k = $perm[10];
-$l = $perm[11];
-	
-$mychar = <STDIN>;
-} 
+}
+
+print "Program Finished.\n"; 

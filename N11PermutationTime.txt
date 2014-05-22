@@ -1,0 +1,15 @@
+Program started...
+    28656.24 real     27929.00 user         0.54 sys
+
+This is the amount of time it took a 900 MHz AMD Athlon XP to calculate all the permutations of 11 variables for an 8 equation sudoku puzzle. Because of a
+mistake in the formuation of the equations a solution was never found. 
+
+Solving the equations for all possible combinations took a little under 8 hours
+of computing time. 
+
+This was done overnight on 5/20/2014.
+- Jovan Trujillo
+
+
+
+
